@@ -181,7 +181,7 @@ def persist_lines(config, lines) -> None:
 
             # Validate record
             try:
-                validators[stream].validate(float_to_decimal(o['record']))
+                # validators[stream].validate(float_to_decimal(o['record']))
             except Exception as ex:
                 if type(ex).__name__ == "InvalidOperation":
                     logger.error("Data validation failed and cannot load to destination. RECORD: {}\n'multipleOf' validations that allows long precisions are not supported (i.e. with 15 digits or more). Try removing 'multipleOf' methods from JSON schema."
