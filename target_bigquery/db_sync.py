@@ -330,7 +330,7 @@ class DbSync:
 
     def open_connection(self):
         project_id = self.connection_config['project_id']
-        return bigquery.Client(project=project_id)
+        return bigquery.Client(project=project_id, location='eu')
 
     def query(self, query, params=[]):
         def to_query_parameter(value):
