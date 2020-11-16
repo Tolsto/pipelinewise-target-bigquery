@@ -453,10 +453,10 @@ class DbSync:
         job = client.load_table_from_file(f, table_ref, job_config=job_config)
         job.result()
 
-        if len(self.stream_schema_message['key_properties']) > 0:
-            query = self.update_from_temp_table(temp_table)
-        else:
-            query = self.insert_from_temp_table(temp_table)
+        #if len(self.stream_schema_message['key_properties']) > 0:
+        #    query = self.update_from_temp_table(temp_table)
+        #else:
+        query = self.insert_from_temp_table(temp_table)
         drop_temp_query = self.drop_temp_table(temp_table)
 
         results = self.query([query, drop_temp_query])
