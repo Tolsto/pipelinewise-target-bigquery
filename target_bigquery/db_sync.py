@@ -424,6 +424,9 @@ class DbSync:
                         n = flatten[name]
                         result[name] = None if n is None else Decimal(n).quantize(NINE_DECIMALS)
                     else:
+                        # Quick fix nested records. The Avro writer expects flattened keys.
+                        if type(flatten[name]) is dict:
+                            flatten[name] = dict([(k.lower(), v) for k, v in flatten[name].items()])
                         result[name] = flatten[name] if name in flatten else ''
                 else:
                     result[name] = None
